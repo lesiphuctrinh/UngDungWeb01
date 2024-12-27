@@ -1,0 +1,71 @@
+﻿<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>LSPT - SHOP</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/assets/img/favicon.png">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/themes/bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- all css here -->
+    <link href="~/themes/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/themes/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/themes/bower_components/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/assets/css/bundle.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link rel="stylesheet" href="~/assets/css/responsive.css">
+    <script src="~/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+    <!-- Add your site or application content here -->
+    <!--pos page start-->
+    <div class="pos_page">
+        <div class="container">
+            <!--pos page inner-->
+            <div class="pos_page_inner">
+                <!--header area -->
+                @{
+                    await Html.RenderPartialAsync("_Header");
+                }
+                <!--header end -->
+                
+                <!--pos home section-->
+                @RenderBody()
+                <!--pos home section end-->
+            </div>
+            <!--pos page inner end-->
+        </div>
+    </div>
+    <!--pos page end-->
+    @{
+        await Html.RenderPartialAsync("_Footer");
+    }
+    <!--footer area start-->
+ 
+    <!--footer area end-->
+    <!-- all js here -->
+   <!--<script src="~/assets/js/vendor/jquery-1.12.0.min.js"></script> -->
+    <script src="~/assets/jquery/dist/jquery.js"></script>
+    <script src="~/assets/js/popper.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/ajax-mail.js"></script>
+    <script src="~/themes/bower_components/fastclick/lib/fastclick.js"></script>
+    <script src="~/themes/bower_components/inputmask/dist/jquery.inputmask.bundle.js"></script>
+
+    <!-- SlimScroll -->
+    <script src="~/themes/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/themes/bower_components/fastclick/lib/fastclick.js"></script>
+    <script src="~/themes/bower_components/moment/min/moment.min.js"></script>
+    <script src="~/themes/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="~/themes/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/themes/bower_components//select2/dist/js/select2.min.js"></script>
+
+    @RenderSection("scripts", false)
+</body>
+</html>

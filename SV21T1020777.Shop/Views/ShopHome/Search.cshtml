@@ -1,0 +1,108 @@
+﻿@model SV21T1020777.Shop.Models.ProductSearchResult
+@{
+    Layout = null;
+}
+<!--new product area start-->
+<div class="new_product_area mt-2">
+    <div class="block_title">
+        <h3>Sản phẩm</h3>
+    </div>
+    <!--hiển thị danh sách tìm được-->
+    <div class="row">
+        @if (!Model.Data.Any()) // Model.Data.Count < 0
+        {
+            <div class="col-12">
+                <p class="text-center">Không tìm thấy kết quả tìm kiếm.</p>
+            </div>
+        }
+        else
+        {
+            @foreach (var item in Model.Data)
+            {
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <form class="row" action="~/ShoppingCart/Index" method="post">
+                        <input type="hidden" name="@nameof(item.ProductID)" value="@item.ProductID" />
+                        <input type="hidden" name="@nameof(item.ProductName)" value="@item.ProductName" />
+                        <input type="hidden" name="@nameof(item.Photo)" value="@item.Photo" />
+                        <input type="hidden" name="@nameof(item.Unit)" value="@item.Unit" />
+                        
+                        <div class="product_active owl-carousel">
+                            <div class="single_product">
+                                <div class="product_thumb">
+                                    <img src="http://localhost:5291/images/products/@item.Photo" alt="anh" width="220px">
+                                    <div class="product_action">
+                                        <a href="~/ShoppingCart/Index/@item.ProductID">
+                                            <i class="fa fa-shopping-cart"></i> Mua ngay
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="product_content">
+                                    <span class="product_price">@item.Price.ToString("N0")</span>
+                                    <h3 class="product_title">
+                                        <p>@item.ProductName</p>
+                                    </h3>
+                                </div>
+                                <div class="product_info">
+                                    <ul>
+                                        <li>
+                                            <a href="~/ShoppingCart/Index/@item.ProductID">
+                                                Đặt hàng
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            }
+        }
+    </div>
+</div>
+<!--phân trang-->
+<div class="d-flex align-content-center justify-content-center">
+    <div class="text-center">
+        <ul class="pagination">
+            @{
+                int maxPagesToShow = 10;
+                int startPage = Math.Max(1, Model.Page - maxPagesToShow / 2);
+                int endPage = Math.Min(Model.PageCount, startPage + maxPagesToShow - 1);
+
+                if (endPage - startPage < maxPagesToShow - 1)
+                {
+                    startPage = Math.Max(1, endPage - maxPagesToShow + 1);
+                }
+
+                if (startPage > 1)
+                {
+                    <li><a href="javascript:" onclick="doSearch(1)">1</a></li>
+                    if (startPage > 2)
+                    {
+                        <li><span>...</span></li>
+                    }
+                }
+
+                for (int p = startPage; p <= endPage; p++)
+                {
+                    if (p == Model.Page)
+                    {
+                        <li class="active"><a href="#">@p</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="javascript:" onclick="doSearch(@p)">@p</a></li>
+                    }
+                }
+
+                if (endPage < Model.PageCount)
+                {
+                    if (endPage < Model.PageCount - 1)
+                    {
+                        <li><span>...</span></li>
+                    }
+                    <li><a href="javascript:" onclick="doSearch(@Model.PageCount)">@Model.PageCount</a></li>
+                }
+            }
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,142 @@
+﻿<div class="pos_page">
+    <div class="container">
+        <!--pos page inner-->
+        <div class="pos_page_inner">
+            <div class="breadcrumbs_area">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="breadcrumb_content">
+                            <ul>
+                                <li><a href="~/ShopHome/Index">Trang chủ</a></li>
+                                <li><i class="fa fa-angle-right"></i></li>
+                                <li>Tài khoản của tôi</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--breadcrumbs area end-->
+            <!-- Start Maincontent  -->
+            <section class="main_content_area">
+                <div class="account_dashboard">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3 col-lg-3">
+                            <!-- Nav tabs -->
+                            <div class="dashboard_tab_button">
+                                <ul role="tablist" class="nav flex-column dashboard-list">
+                                    <li><a href="#ShopAccount-details" data-toggle="tab" class="nav-link">Thông tin tài khoản</a></li>
+                                    <li><a href="#ShopAccount-change" data-toggle="tab" class="nav-link">Đổi mật khẩu</a></li>
+                                    <li><a href="~/ShopAccount/Login" class="nav-link">Đăng xuất</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-9 col-lg-9">
+                            <!-- Tab panes -->
+                            <div class="tab-content dashboard_content">
+                                <div class="tab-pane fade" id="ShopAccount-details">
+                                    <h3>Thông tin chi tiết </h3>
+                                    @if (TempData["Success1"] != null)
+                                    {
+                                        <div class="alert alert-success">
+                                            @TempData["Success1"]
+                                        </div>
+                                    }
+                                    @if (TempData["Error1"] != null)
+                                    {
+                                        <div class="alert alert-danger">
+                                            @TempData["Error1"]
+                                        </div>
+                                    }
+                                    @{
+                                        var userData = User.GetUserData();
+                                    }
+                                    <div class="login">
+                                        <div class="login_form_container">
+                                            <div class="account_login_form">
+                                                <form action="~/ShopAccount/UpdateDetails" method="post" enctype="multipart/form-data">
+                                                    @Html.AntiForgeryToken()
+                                                    <div class="form-group">
+                                                        <img id="Photo" src="~/images/customer/@userData.Photo" class="img img-responsive img-bordered" style="width:100px" />
+                                                    </div>
+                                                    <label>Ảnh cá nhân:</label>
+                                                    <input type="hidden" name="PhotoCurrent" value="@userData.Photo"/>
+                                                    <input type="file" class="form-control" name="_Photo" value="@userData.Photo" accept="image/*"
+                                                           onchange="document.getElementById('Photo').src = window.URL.createObjectURL(this.files[0])" />
+                                                    <label>Họ tên:</label>
+                                                    <input type="text" name="displayName" value="@userData.DisplayName">
+                                                    <label>Email:</label>
+                                                    <input type="text" name="email" value="@userData.UserName">
+                                                    <label>Số điện thoại:</label>
+                                                    <input type="text" name="phone" value="@userData.Phone">
+                                                    <div class="save_button primary_btn default_button">
+                                                        <button type="submit" class="btn" style="background-color: rgb(0, 187, 166); color:aliceblue">Save</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            <!--Đổi mật khẩu-->
+
+                                <div id="ShopAccount-change" class="tab-pane fade show active">
+                                    <h3>Đổi mật khẩu</h3>
+                                    @if (TempData["Success"] != null)
+                                    {
+                                        <div class="alert alert-success">
+                                            @TempData["Success"]
+                                        </div>
+                                    }
+                                    @if (TempData["Error"] != null)
+                                    {
+                                        <div class="alert alert-danger">
+                                            @TempData["Error"]
+                                        </div>
+                                    }
+
+                                    <div class="login">
+                                        <div class="login_form_container">
+                                            <div class="account_login_form">
+                                                <form action="~/ShopAccount/ChangePassword" method="post">
+                                                    @Html.AntiForgeryToken()
+                                                    <label>Mật khẩu cũ:</label>
+                                                    <input type="password" class="form-control" name="oldPassword" required autofocus>
+                                                    <label>Mật khẩu mới:</label>
+                                                    <input type="password" class="form-control" name="newPassword" required>
+                                                    <label>Xác nhận mật khẩu:</label>
+                                                    <input type="password" class="form-control" name="confirmPassword" required>
+
+                                                    <div class="save_button primary_btn default_button">
+                                                        <button type="submit" class="btn" style="background-color: rgb(0, 187, 166); color: aliceblue;">Save</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End Maincontent  -->
+        </div>
+        <!--pos page inner end-->
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var activeTab = '@TempData["ActiveTab"]';
+        if (activeTab) {
+            var tab = document.querySelector(`[href="#${activeTab}"]`);
+            if (tab) {
+                tab.click();
+            }
+        }
+    });
+</script>
+

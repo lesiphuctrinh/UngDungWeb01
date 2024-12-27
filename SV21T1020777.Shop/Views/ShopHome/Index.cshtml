@@ -1,0 +1,87 @@
+﻿@model SV21T1020777.Shop.Models.ProductSearchInput
+<!--pos home section-->
+<div class=" pos_home_section">
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="header_right_info">
+            <div class="search_bar">
+            <form id="frmSearchInput" action="~/ShopHome/Search" method="get">
+                <input type="hidden" name="@nameof(Model.PageSize)" value="@Model.PageSize" />
+                 <input type="hidden" name="@nameof(Model.CategoryID)" value="@Model.CategoryID" />
+                <input type="text" name="@nameof(Model.SearchValue)" value="@Model.SearchValue" placeholder="Nhập sản phẩm cần tìm kiếm" />
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="row pos_home">
+        <div class="col-lg-3 col-md-8 col-12">
+            <!--sidebar banner end-->
+            <!--categorie menu start-->
+            <div class="sidebar_widget catrgorie mb-35">
+                <h3>Loại hàng</h3>
+                <input type="hidden" name="@nameof(Model.CategoryID)" value="@Model.CategoryID" />
+                @foreach (var category in SV21T1020777.BusinessLayers.CommonDataService.ListOfCategories())
+                {
+                    <ul>
+                        <li class="has-sub">
+                            <!-- Gửi CategoryID vào phương thức Search -->
+                            <a href="javascript:void(0)" onclick="doSearchByCategory(@category.CategoryID)">
+                                <p>@category.CategoryName</p>
+                            </a>
+                        </li>
+                    </ul>
+                }
+            </div>
+            <!--categorie menu end-->
+            <!--sidebar banner end-->
+
+
+
+        </div>
+        <div class="col-lg-9 col-md-12" id="searchResult">
+          
+        </div>
+
+
+
+    </div>
+    </div>
+    <!--pos home section end-->
+@section scripts {
+    <script>
+        function doSearch(page) {
+            var searchCondition = $("#frmSearchInput").serializeArray();
+            searchCondition.push({ name: "page", value: page });
+
+            var action = $("#frmSearchInput").prop("action");
+            var method = $("#frmSearchInput").prop("method");
+
+            $.ajax({
+                url: action,
+                type: method,
+                data: searchCondition,
+                success: function (data) {
+                    $("#searchResult").html(data);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            doSearch(@Model.Page);
+            $("#frmSearchInput").submit(function (e) {
+                e.preventDefault();
+                doSearch(1);
+            });
+        });
+
+        function doSearchByCategory(categoryID) {
+            // Cập nhật CategoryID trong form tìm kiếm
+            $("input[name='CategoryID']").val(categoryID);
+
+            // Gửi yêu cầu tìm kiếm mới với CategoryID đã thay đổi
+            doSearch(1); // Gọi lại doSearch để tải lại kết quả tìm kiếm từ đầu (trang 1)
+        }
+    </script>
+}

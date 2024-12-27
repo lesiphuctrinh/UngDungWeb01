@@ -1,0 +1,17 @@
+E:\LapTrinhUngDungWeb\SV21T1020777\SV21T1020777.BusinessLayers\bin\Debug\net8.0\SV21T1020777.BusinessLayers.deps.json
+E:\LapTrinhUngDungWeb\SV21T1020777\SV21T1020777.BusinessLayers\bin\Debug\net8.0\SV21T1020777.BusinessLayers.dll
+E:\LapTrinhUngDungWeb\SV21T1020777\SV21T1020777.BusinessLayers\bin\Debug\net8.0\SV21T1020777.BusinessLayers.pdb
+E:\LapTrinhUngDungWeb\SV21T1020777\SV21T1020777.BusinessLayers\bin\Debug\net8.0\SV21T1020777.DataLayers.dll
+E:\LapTrinhUngDungWeb\SV21T1020777\SV21T1020777.BusinessLayers\bin\Debug\net8.0\SV21T1020777.DomainModels.dll
+E:\LapTrinhUngDungWeb\SV21T1020777\SV21T1020777.BusinessLayers\bin\Debug\net8.0\SV21T1020777.DataLayers.pdb
+E:\LapTrinhUngDungWeb\SV21T1020777\SV21T1020777.BusinessLayers\bin\Debug\net8.0\SV21T1020777.DomainModels.pdb
+E:\LapTrinhUngDungWeb\SV21T1020777\SV21T1020777.BusinessLayers\obj\Debug\net8.0\SV21T1020777.BusinessLayers.csproj.AssemblyReference.cache
+E:\LapTrinhUngDungWeb\SV21T1020777\SV21T1020777.BusinessLayers\obj\Debug\net8.0\SV21T1020777.BusinessLayers.GeneratedMSBuildEditorConfig.editorconfig
+E:\LapTrinhUngDungWeb\SV21T1020777\SV21T1020777.BusinessLayers\obj\Debug\net8.0\SV21T1020777.BusinessLayers.AssemblyInfoInputs.cache
+E:\LapTrinhUngDungWeb\SV21T1020777\SV21T1020777.BusinessLayers\obj\Debug\net8.0\SV21T1020777.BusinessLayers.AssemblyInfo.cs
+E:\LapTrinhUngDungWeb\SV21T1020777\SV21T1020777.BusinessLayers\obj\Debug\net8.0\SV21T1020777.BusinessLayers.csproj.CoreCompileInputs.cache
+E:\LapTrinhUngDungWeb\SV21T1020777\SV21T1020777.BusinessLayers\obj\Debug\net8.0\SV21T102.06CAC94A.Up2Date
+E:\LapTrinhUngDungWeb\SV21T1020777\SV21T1020777.BusinessLayers\obj\Debug\net8.0\SV21T1020777.BusinessLayers.dll
+E:\LapTrinhUngDungWeb\SV21T1020777\SV21T1020777.BusinessLayers\obj\Debug\net8.0\refint\SV21T1020777.BusinessLayers.dll
+E:\LapTrinhUngDungWeb\SV21T1020777\SV21T1020777.BusinessLayers\obj\Debug\net8.0\SV21T1020777.BusinessLayers.pdb
+E:\LapTrinhUngDungWeb\SV21T1020777\SV21T1020777.BusinessLayers\obj\Debug\net8.0\ref\SV21T1020777.BusinessLayers.dll

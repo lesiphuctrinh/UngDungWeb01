@@ -1,0 +1,63 @@
+﻿<div class="header_area">
+    <!--header top-->
+    <div class="header_top">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-6">
+            </div>
+            <div class="col-lg-6 col-md-6">
+                @{
+                    var userData = User.GetUserData();
+                    if (userData != null)
+                    {
+                        <div class="header_links">
+                            <ul>
+                                <li>
+                                    <a href="~/ShopAccount/MyAccount">
+                                        <img src="~/images/customer/@userData.Photo" width="25px">
+                                    </a>
+                                </li>
+                                <li><a href="~/ShopAccount/MyAccount" title="Tài khoản của tôi">@userData.DisplayName</a></li>
+                            </ul>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <!--header top end-->
+    <!--header middel-->
+    <div class="header_middel">
+        <div class="row align-items-center">
+            <!--logo start-->
+            <div class="col-lg-3 col-md-3">
+                <div class="logo">
+                    <a href="~/ShopHome/index"><img src="~/assets/img/logo/avatar.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--header middel end-->
+    <div class="header_bottom">
+        <div class="row">
+            <div class="col-12">
+                <div class="main_menu_inner">
+                    <div class="main_menu d-none d-lg-block">
+                        <nav>
+                            <ul>
+                                <li>
+                                    <a href="~/ShopHome/Index">Trang chủ</a>
+                                </li>
+                                <li>
+                                    <a href="~/ShoppingCart/Index">Giỏ hàng(0)</a>
+                                </li>
+                                <li><a href="~/History/Index">Lịch sử mua hàng</a></li>
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
